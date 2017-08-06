@@ -9,6 +9,7 @@ public class HangmanTest{
     List<String>  wordsToGuess= Arrays.asList("cow", "goat", "leopard","lion","otter","horse");
 
      Random myRand = new Random();
+     String word = wordsToGuess.get(myRand.nextInt(wordsToGuess.size()));
    
     @Test
     public void findWord_itExpectsAWord_word(){
@@ -25,7 +26,9 @@ public class HangmanTest{
     @Test
     public void replaceDashesWithCorrectGuess_letter(){
         Hangman testHangman = new Hangman();
-        String expected3 = "m-----";
-        assertEquals(expected3, testHangman.replaceDashesWithCorrectGuess("moringa"));
+        
+        Boolean expected3 = true;
+
+        assertEquals(expected3, testHangman.replaceDashesWithCorrectGuess("8"));
     }
 }

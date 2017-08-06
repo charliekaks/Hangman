@@ -9,6 +9,7 @@ List<String> wordsToGuess = Arrays.asList("cow", "goat", "leopard","lion","otter
     Random myRand = new Random();
     //Randomly picking a word from the array
     String wordPicked = wordsToGuess.get(myRand.nextInt(wordsToGuess.size()));
+    String [] wordArray = wordPicked.split("");
     //the method that ensures tha a word is actually being gotten from the array.
     public String findWord(String select){
         return wordPicked;
@@ -27,10 +28,15 @@ List<String> wordsToGuess = Arrays.asList("cow", "goat", "leopard","lion","otter
         }
           return f;
    }
-        public String replaceDashesWithCorrectGuess(String letter) {
-          if(){
-            
+        String nnn = replaceWordWithDashes(wordPicked);
+        public Boolean replaceDashesWithCorrectGuess(String letter) {
+          for (int indi = 0; indi < wordArray.length; indi++) {
+            if (letter==wordArray[indi]) {
+                wordArray[indi]=letter;
+                
+            }
           }
+          
         }
 
    
