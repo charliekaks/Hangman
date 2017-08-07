@@ -32,4 +32,12 @@ public class HangmanTest{
         String expected = "-o-";
         assertEquals(expected,testHangman.replaceDashesWithCorrectGuess('o'));
     }
+    public void replaceDashesWithCorrectGuessatallinstances_letter(){
+        Hangman testHangman = new Hangman();
+        List<String>  wordsToGuess= Arrays.asList("cow", "goat", "leopard","lion","otter","horse");
+        String word = testHangman.wordsToGuess.get(3);
+        String dash = testHangman.replaceWordWithDashes(word);
+        String expected = "-tt--";
+        assertEquals(expected,testHangman.replaceDashesWithCorrectGuess('t'));
+    }
 }
