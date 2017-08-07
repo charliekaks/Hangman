@@ -26,9 +26,10 @@ public class HangmanTest{
     @Test
     public void replaceDashesWithCorrectGuess_letter(){
         Hangman testHangman = new Hangman();
-        
-        Boolean expected3 = true;
-
-        assertEquals(expected3, testHangman.replaceDashesWithCorrectGuess("8"));
+        List<String>  wordsToGuess= Arrays.asList("cow", "goat", "leopard","lion","otter","horse");
+        String word = testHangman.wordsToGuess.get(3);
+        String dash = testHangman.replaceWordWithDashes(word);
+        String expected = "-o-";
+        assertEquals(expected,testHangman.replaceDashesWithCorrectGuess('o'));
     }
 }

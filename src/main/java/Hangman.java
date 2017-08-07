@@ -9,7 +9,7 @@ List<String> wordsToGuess = Arrays.asList("cow", "goat", "leopard","lion","otter
     Random myRand = new Random();
     //Randomly picking a word from the array
     String wordPicked = wordsToGuess.get(myRand.nextInt(wordsToGuess.size()));
-    String [] wordArray = wordPicked.split("");
+    char [] wordArray = wordPicked.toCharArray();
     //the method that ensures tha a word is actually being gotten from the array.
     public String findWord(String select){
         return wordPicked;
@@ -18,9 +18,9 @@ List<String> wordsToGuess = Arrays.asList("cow", "goat", "leopard","lion","otter
    public String replaceWordWithDashes(String dashes) {
      String f = "";
        //Spliting the word into an array of strings
-     String dashedWord[] =dashes.split("");
+     char dashedWord[] =dashes.toCharArray();
        for (int das = 0; das < dashedWord.length; das++) {
-            dashedWord[das]="-";        
+            dashedWord[das]='-';        
        }
         for(int fin=0; fin<dashedWord.length; fin++){
           //converting the array into a string
@@ -28,16 +28,23 @@ List<String> wordsToGuess = Arrays.asList("cow", "goat", "leopard","lion","otter
         }
           return f;
    }
-        String nnn = replaceWordWithDashes(wordPicked);
-        public Boolean replaceDashesWithCorrectGuess(String letter) {
-          for (int indi = 0; indi < wordArray.length; indi++) {
-            if (letter==wordArray[indi]) {
-                wordArray[indi]=letter;
-                
-            }
+        
+        //function that loops through the picked word and replacing it with a correct guess
+        public String replaceDashesWithCorrectGuess(char letter) {
+          //converting the dashed word to an array to enable looping
+        char[] correctWord=replaceWordWithDashes(wordPicked).toCharArray();
+          for (int correctges = 0; correctges < wordArray.length; correctges++) {
+            if(wordArray[correctges]==letter){
+                correctWord[correctges] = letter;
+            }   
           }
-          
+          String fina="";
+          for (int fin = 0; fin < correctWord.length; fin++) {
+             fina = fina+correctWord[fin];
+          }
+            return fina;
         }
+       
 
    
 
