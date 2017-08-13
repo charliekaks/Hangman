@@ -1,8 +1,15 @@
 import java.util.List;
 import java.util.Random;
+
+import org.omg.CORBA.INV_FLAG;
+
 import java.util.Arrays;
 
 public class Hangman{
+  String finalGuess="";
+  String pickedWord="";
+
+
   //the array that holds all the words in the game  
 List<String> wordsToGuess = Arrays.asList("cow", "goat", "leopard","lion","otter","horse");
 // intializing the random Object
@@ -16,37 +23,45 @@ List<String> wordsToGuess = Arrays.asList("cow", "goat", "leopard","lion","otter
     }
     //the method that replaces the words with blank dashes
    public String replaceWordWithDashes(String dashes) {
+     //Randomly picking a word from the array
      String f = "";
        //Spliting the word into an array of strings
-     char dashedWord[] =dashes.toCharArray();
-       for (int das = 0; das < dashedWord.length; das++) {
-            dashedWord[das]='-';        
+     char wordArray[] =dashes.toCharArray();
+       for (int das = 0; das < wordArray.length; das++) {
+            wordArray[das]='-';        
        }
-        for(int fin=0; fin<dashedWord.length; fin++){
+        for(int fin=0; fin<wordArray.length; fin++){
           //converting the array into a string
-           f= f+ dashedWord[fin];
+           f= f+ wordArray[fin];
         }
-          return f;
+        pickedWord =f;
+          return pickedWord;
    }
-        
-        //function that loops through the picked word and replacing it with a correct guess
-        public String replaceDashesWithCorrectGuess(char letter) {
-          //converting the dashed word to an array to enable looping
-        char[] correctWord=replaceWordWithDashes(wordPicked).toCharArray();
-          for (int correctges = 0; correctges < wordArray.length; correctges++) {
-            if(wordArray[correctges]==letter){
-                correctWord[correctges] = letter;
-            }   
+        //method to replace the dashes with the correct letter
+        public String replaceTheDashesWithLetters(char letter,String selectedWord) {
+          String dashedWord = replaceWordWithDashes(selectedWord);
+          char [] playerguess = dashedWord.toCharArray();
+          StringBuilder result = new StringBuilder();
+          char[] choosen = selectedWord.toCharArray();
+                   
+          for (int i = 0; i < choosen.length; i++) {
+            if (playerguess[i]=='-') {
+              if (choosen[i]==letter) {
+                result.append(letter);
+              }else{
+                result.append('-');
+              }        
+            }else{
+              result.append(playerguess[i]);
+            }     
+            
           }
-          String fina="";
-          for (int fin = 0; fin < correctWord.length; fin++) {
-             fina = fina+correctWord[fin];
-          }
-            return fina;
+            
+            finalGuess = result.toString();
+            return finalGuess;
         }
-       
-
-   
-
+        
+          
+        
 
 }

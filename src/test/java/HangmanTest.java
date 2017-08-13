@@ -24,20 +24,22 @@ public class HangmanTest{
         assertEquals(expected2,testHangman.replaceWordWithDashes("moringa"));
     }
     @Test
-    public void replaceDashesWithCorrectGuess_letter(){
-        Hangman testHangman = new Hangman();
-        List<String>  wordsToGuess= Arrays.asList("cow", "goat", "leopard","lion","otter","horse");
-        String word = testHangman.wordsToGuess.get(3);
-        String dash = testHangman.replaceWordWithDashes(word);
-        String expected = "-o-";
-        assertEquals(expected,testHangman.replaceDashesWithCorrectGuess('o'));
+    public void replaceTheDashesWithLetters_dashedword(){
+       Hangman testHangman = new Hangman();
+       String expected = "-o-";
+       assertEquals(expected, testHangman.replaceTheDashesWithLetters('o',"cow")); 
     }
-    public void replaceDashesWithCorrectGuessatallinstances_letter(){
-        Hangman testHangman = new Hangman();
-        List<String>  wordsToGuess= Arrays.asList("cow", "goat", "leopard","lion","otter","horse");
-        String word = testHangman.wordsToGuess.get(3);
-        String dash = testHangman.replaceWordWithDashes(word);
-        String expected = "-tt--";
-        assertEquals(expected,testHangman.replaceDashesWithCorrectGuess('t'));
+    @Test
+    public void replaceTheDashesWithLetters_atAllInstances_dashedword(){
+       Hangman testHangman = new Hangman();
+       String expected = "-tt--";
+       assertEquals(expected, testHangman.replaceTheDashesWithLetters('t',"otter")); 
+    }
+    @Test
+    public void skipTheletterandGiveAStatement_dashedword(){
+       Hangman testHangman = new Hangman();
+       String expected = "-tt--";
+       assertEquals(expected, testHangman.replaceTheDashesWithLetters('t',"otter")); 
     }
 }
+    
